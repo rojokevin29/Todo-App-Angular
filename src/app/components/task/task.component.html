@@ -1,0 +1,57 @@
+
+
+<div class="card mb-2" >
+    <div class="card-header d-flex justify-content-between align-item-center">
+        
+{{ task.title }}
+
+<div>
+    
+    
+    <input type="checkbox" [checked]="task.finished" (change)="cambiarEstadoDeTarea(task)">
+   
+    
+    
+    <a  class="btn btn-success"  (click)="task.edit = !task.edit" >
+        Editar
+    </a>
+    <button class="btn btn-primary" (click)="task.hide = !task.hide ">
+        Show
+    </button>
+    <button class="btn btn-danger" (click)="deleteTask(task)">
+        DELETE
+    </button>
+</div>
+    </div>
+    <div class="card-body" [hidden]="task.hide">
+        <p>
+            Descripcion:
+            {{ task.description }}
+        </p>
+        <p>
+            Fecha:
+            
+            {{ task.createdAt }}
+        </p>
+
+    </div>
+    
+    <div class="card-body" [hidden]="task.edit">
+        <form   >
+            <div class="form-group">
+                <input type="text" class="form-control"  placeholder="Task title" [value]="task.title"  #editTitle>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control"  id="" cols="30" rows="5" placeholder="Task description" [value]="task.description"  #editDescription></textarea>
+            </div>
+            <button class="btn btn-primary btn-block">
+                Enviar
+            </button>
+        </form>
+    </div>
+    
+   
+
+
+
+
